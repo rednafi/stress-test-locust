@@ -43,3 +43,11 @@ print(response.text)
 ```
 
 ## Run
+
+* Make sure you've `docker` and `docker-compose` installed on your machine
+* Clone this repository and go to the root directory
+* Run:
+    ```
+    sudo chmod +x scripts/run.sh
+    ./scripts/run.sh
+    ```
