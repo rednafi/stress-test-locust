@@ -2,10 +2,9 @@
 
 ## Description
 
-This repository aims to demonstrate API stress testing with Python Locust. It uses a factory pattern architecture to organize and orchestrate the tests.
+This repository aims to demonstrate API stress testing with Python Locust. It employs factory pattern architecture to organize and orchestrate the tests. It uses RapidAPI's currency exchange [API] for demonstration purpose.
 
 ## Architecture
-
 
 ```
 .
