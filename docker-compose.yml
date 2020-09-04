@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  master:
+    image: rednafi/locust-template:v1
+    container_name: locust-master
+    build:
+      context: ./
+    ports:
+     - 8089:8089
+    volumes:
+      - ./:/code/
+    command: -f /code/locustfiles/locustfile.py --master
+
+  worker:
+    image: rednafi/locust-template:v1
+    volumes:
+      - ./:/code/
+    command: -f /code/locustfiles/locustfile.py --worker --master-host master
