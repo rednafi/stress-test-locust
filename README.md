@@ -2,7 +2,29 @@
 
 ## Description
 
-This repository aims to demonstrate API stress testing with Python Locust. It employs factory pattern architecture to organize and orchestrate the tests. It uses RapidAPI's currency exchange [API] for demonstration purpose.
+This repository aims to demonstrate API stress testing with Python Locust. It employs factory pattern architecture to organize and orchestrate the tests. It uses [Rapid API's](https://rapidapi.com/) currency exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for doing the load testing.
+
+### Check the API
+
+Sign up for a Rapid API account and get your token. You can access the API via Python's [HTTPx]() library like this:
+
+```python
+import httpx
+
+url = "https://currency-exchange.p.rapidapi.com/exchange"
+
+querystring = {"q": "1.0", "from": "USD", "to": "BDT"}
+
+headers = {
+    "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
+    "x-rapidapi-key": "your-api-token",
+}
+
+with httpx.Client() as client:
+    response = client.get(url, headers=headers, params=querystring)
+
+print(response.text)
+```
 
 ## Architecture
 
@@ -19,3 +41,5 @@ This repository aims to demonstrate API stress testing with Python Locust. It em
 └── scripts               [Scripts required for deployment and linting]
     └── run.sh
 ```
+
+## Run
