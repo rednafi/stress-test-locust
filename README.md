@@ -1,10 +1,17 @@
+<div align="center">
+
 # Stress Testing w/ Locust
+
+</div>
 
 ## Description
 
-This repository aims to demonstrate API stress testing with Python Locust. It employs factory pattern architecture to organize and orchestrate the tests. It uses [Rapid API's](https://rapidapi.com/) currency exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for doing the load testing.
+Locust is a distributed and scalable open source library that let's you write effective load-tests in pure Python. This repository demonstrates a modular architecture to establish a template for quickly architecting scalable load tests via Locust.
 
-### Check the API
+It uses [Rapid API's](https://rapidapi.com/) currency-exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for doing the load testing.
+
+
+### Access the API
 
 Sign up for a Rapid API account and get your token. You can access the API via Python's [HTTPx](https://github.com/encode/httpx) library like this:
 
