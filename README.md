@@ -6,7 +6,7 @@ This repository aims to demonstrate API stress testing with Python Locust. It em
 
 ### Check the API
 
-Sign up for a Rapid API account and get your token. You can access the API via Python's [HTTPx]() library like this:
+Sign up for a Rapid API account and get your token. You can access the API via Python's [HTTPx](https://github.com/encode/httpx) library like this:
 
 ```python
 import httpx
