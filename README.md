@@ -12,7 +12,7 @@
 
 This template uses [Rapid API's](https://rapidapi.com/) currency-exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for showcasing the load testing procedure. The API converts one currency to another using the current exchange rate.
 
-### Anatomy
+### API Anatomy
 
 It takes three parameters in its query string —
 ```
@@ -41,7 +41,7 @@ The response will look like this:
 84.91925⏎
 ```
 
-Or, you might want to access it in Python. You can do it using the [HTTPx](https://github.com/encode/httpx) library like this:
+Or, you might want to access it via Python. You can do so using the [HTTPx](https://github.com/encode/httpx) library like this:
 
 
 ```python
@@ -105,6 +105,7 @@ The test suite has two primary [bounded contexts](https://martinfowler.com/bliki
     sudo chmod +x scripts/run.sh
     ./scripts/run.sh -n 4 # number of the workers
     ```
+    
 * To access the the Locust GUI, go to [http://localhost:8089/](http://localhost:8089/) on your browser. You'll be prompted to provide a username and a password. Use `ubuntu` as the `username` and `debian` as the password. You'll be greeted by a screen like this:
 
     ![locust signin](https://user-images.githubusercontent.com/30027932/92285103-51988580-ef25-11ea-9155-c9d3f5dcaf42.png)
