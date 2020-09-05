@@ -64,26 +64,42 @@ print(response.text)
 
 ## Stress Testing Pipeline
 
-Below, you can see the core architecture of the test pipline. For brevity's sake, files regarding containeraization, deployment and dependency management have been omitted.
-
+Below, you can see the core architecture of the test pipline. For brevity's sake — files regarding containeraization, deployment and dependency management have been omitted.
 
 ```
 .
-├── commons               [Common functions required by the test modules]
+├── commons             # Common elements required by the test modules
 │   └── auth.py
-├── locust.conf           [Locust config file]
-└── locustfiles           [Primary folder where the tests live]
-    ├── __init__.py
-    ├── bdt_convert.py    [TaskSet 1]
-    ├── rs_convert.py     [TaskSet 2]
-    └── locustfile.py     [Locust entrypoint]
+├── locustfiles         # Primary folder where the tests live
+│   ├── __init__.py
+│   ├── bdt_convert.py  # Test module 1
+│   ├── rs_convert.py   # Test module 2
+│   └── locustfile.py   # Locust entrypoint
+└── locust.conf         # Locust configuration file
 ```
 
-The test suite has two primary [bounded contexts](https://martinfowler.com/bliki/BoundedContext.html) —
+The test suite has three primary components —
+`commons`, `locustfiles` and the `locust.conf` file.
 
-* **`commons`**: This is where the common elements required for testing, like `login` and `logout` functions reside. Here, all the common elements can be found in the `auth.py` module.
+### [commons](./commons/)
+The common elements required for testing, like `login` and `logout` functions reside in the **`commons`** directory. Here, all the common elements are arranged in the `auth.py` module.
 
-* **`locustfiles`**: This is where all the actual test modules reside. Test modules import and use the elements that resides in the `commons` directory.
+### [locustfiles](./locustfiles/)
+The actual test modules reside in the **`locustfiles`** directory. Test modules import and use the elements that resides in the `commons` directory.
+
+The test suite consists of three modules — `bdt_convert.py`, `rs_convert.py` and `locustfile.py`. The first two files are the test modules and the third file acts as the entrypoint that Locust uses to spin up a server and run the tests.
+
+* [**`bdt_convert.py`**](./locustfiles/bdt_convert.py/): This module houses a single [TaskSet](https://docs.locust.io/en/stable/writing-a-locustfile.html#taskset-class) named `BDTConvert` that has two [Tasks](https://docs.locust.io/en/stable/writing-a-locustfile.html#tasks) — `usd_to_bdt` and `bdt_to_usd`. The first Task tests the exchange API when the request query asks for USD to BDT conversion and the second Task tests the API while doing BDT to USD conversion.
+
+* [**`rs_convert.py`**](./locustfiles/rs_convert.py/): The second test module is exactly same as the first one; only it tests the API while the request query asks for USD to RS conversion and vice versa.
+
+    The reason that there are two similar test modules is just to demonstrate how you can organize your Tasks, TaskSets and test modules.
+
+* [**`locustfile.py`**](): This file imports the TaskSets from the `bdt_convert` and `usd_convert` modules, and creates a [HttpUser](https://docs.locust.io/en/stable/writing-a-locustfile.html#making-http-requests) that will execute the tasks.
+
+### [conf​.​py]()
+
+The **`locust.conf`** file defines the configurations like *hostname*, *number* of *workers*, *number of simulated users*, *spawn rate*, etc.
 
 
 ## Run the Stress Tests Locally
@@ -115,3 +131,6 @@ The test suite has two primary [bounded contexts](https://martinfowler.com/bliki
     ![Screenshot from 2020-09-05 03-12-25](https://user-images.githubusercontent.com/30027932/92285284-b94ed080-ef25-11ea-9f91-3f972fd844f1.png)
 
 * You can start, stop and control your tests from there.
+
+
+Todo: Add deployment notes
