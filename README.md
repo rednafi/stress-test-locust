@@ -6,10 +6,11 @@
 
 ## Description
 
-[Locust](https://locust.io/) is a distributed and scalable open-source library that lets you do effective load testing in pure Python. This repository demonstrates a modular architecture to establish a template for quickly architecting scalable load tests using Locust. It uses [Rapid API's](https://rapidapi.com/) currency-exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for showcasing the load testing procedure.
+[Locust](https://locust.io/) is a distributed and scalable open-source library that lets you do effective load testing in pure Python. This repository demonstrates a modular architecture to establish a template for quickly architecting scalable load tests using Locust.
 
+### Target API
 
-### Access the API
+This template uses [Rapid API's](https://rapidapi.com/) currency-exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for showcasing the load testing procedure.
 
 Sign up for a Rapid API account and get your token. You can access the API via Python's [HTTPx](https://github.com/encode/httpx) library like this:
 
@@ -18,7 +19,7 @@ import httpx
 
 url = "https://currency-exchange.p.rapidapi.com/exchange"
 
-querystring = {"q": "1.0", "from": "USD", "to": "BDT"}
+querystring = {"q": "1.0", "from": "USD", "to": "BDT",}
 
 headers = {
     "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
