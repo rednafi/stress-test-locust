@@ -4,6 +4,18 @@
 
 </div>
 
+## Table of Contents
+
+* [Description](#description)
+* [Target API](#target-api)
+    * [API Anatomy](#api-anatomy)
+    * [Access the API](#access-the-api)
+* [Stress Testing Pipeline](#stress-testing-pipeline)
+    * [commons](#commons)
+    * [locustfiles](#locustfiles)
+    * [locust.conf](#locustconf)
+* [Run the Stress Tests Locally](#run-the-stress-tests-locally)
+
 ## Description
 
 [Locust](https://locust.io/) is a distributed and scalable open-source library that lets you do effective load testing in pure Python. This repository demonstrates a modular architecture to establish a template for quickly building a scalable stess testing pipeline using Locust. If you're unfamiliar with the terminologies and the generic workflow of writing stress-tests with Locust, it's highly encouraged that you go through the official [documentation](https://docs.locust.io/en/stable/) first.
@@ -97,7 +109,7 @@ The test suite consists of three modules — `bdt_convert.py`, `rs_convert.py` a
 
 * [**`locustfile.py`**](): This file imports the TaskSets from the `bdt_convert` and `usd_convert` modules, and creates a [HttpUser](https://docs.locust.io/en/stable/writing-a-locustfile.html#making-http-requests) that will execute the tasks.
 
-### [conf​.​py](./locust.conf/)
+### [locust.conf](./locust.conf/)
 
 The **`locust.conf`** file defines the configurations like *hostname*, *number* of *workers*, *number of simulated users*, *spawn rate*, etc.
 
