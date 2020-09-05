@@ -122,7 +122,7 @@ The **`locust.conf`** file defines the configurations like *hostname*, *number* 
     ./scripts/run.sh -n 4 # number of the workers
     ```
 
-* To access the the Locust GUI, go to [http://localhost:8089/](http://localhost:8089/) on your browser. You'll be prompted to provide a username and a password. Use `ubuntu` as the `username` and `debian` as the password. You'll be greeted by a screen like this:
+* To access the the Locust GUI, go to [http://localhost:8089/](http://localhost:8089/) on your browser. You'll be prompted to provide a username and a password. Use `ubuntu` as the username and `debian` as the password. You'll be greeted by a screen like this:
 
     ![locust signin](https://user-images.githubusercontent.com/30027932/92285103-51988580-ef25-11ea-9155-c9d3f5dcaf42.png)
 
