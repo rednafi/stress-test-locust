@@ -6,13 +6,22 @@
 
 ## Description
 
-[Locust](https://locust.io/) is a distributed and scalable open-source library that lets you do effective load testing in pure Python. This repository demonstrates a modular architecture to establish a template for quickly architecting scalable load tests using Locust.
+[Locust](https://locust.io/) is a distributed and scalable open-source library that lets you do effective load testing in pure Python. This repository demonstrates a modular architecture to establish a template for quickly building a scalable stess testing pipeline using Locust. If you're unfamiliar with the terminologies and the generic workflow of writing stress-tests with Locust, it's highly encouraged that you go through the official [documentation](https://docs.locust.io/en/stable/) first.
 
-### Target API
+## Target API
 
-This template uses [Rapid API's](https://rapidapi.com/) currency-exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for showcasing the load testing procedure.
+This template uses [Rapid API's](https://rapidapi.com/) currency-exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for showcasing the load testing procedure. The API converts one currency to another using the current exchange rate.
 
-Sign up for a Rapid API account and get your token. You can access the API via Python's [HTTPx](https://github.com/encode/httpx) library like this:
+It takes three parameters in its query string —
+```
+1. q    : str - quantity
+2. from : str - currency to convert from
+3. to   : str - currency to convert to
+```
+
+And returns the converted value.
+
+Sign up for a Rapid API [account](https://rapidapi.com/signup) and get your token. You can access the API via Python's [HTTPx](https://github.com/encode/httpx) library like this:
 
 ```python
 import httpx
@@ -32,21 +41,29 @@ with httpx.Client() as client:
 print(response.text)
 ```
 
-## Architecture
+## Stress Testing Pipeline
+
+Below, you can see the core architecture of the test pipline. For brevity's sake, files regarding containeraization, deployment and dependency management have been omitted.
+
 
 ```
 .
 ├── commons               [Common functions required by the test modules]
 │   └── auth.py
 ├── locust.conf           [Locust config file]
-├── locustfiles           [Primary folder where the tests live]
-│   ├── __init__.py
-│   ├── bdt_convert.py    [TaskSet 1]
-│   ├── rs_convert.py     [TaskSet 2]
-│   └── locustfile.py     [Locust entrypoint]
-└── scripts               [Scripts required for deployment and linting]
-    └── run.sh
+└── locustfiles           [Primary folder where the tests live]
+    ├── __init__.py
+    ├── bdt_convert.py    [TaskSet 1]
+    ├── rs_convert.py     [TaskSet 2]
+    └── locustfile.py     [Locust entrypoint]
 ```
+
+The test suite has two primary [bounded contexts](https://martinfowler.com/bliki/BoundedContext.html) —
+
+* **`commons`**: This is where the common elements required for testing, like `login` and `logout` functions reside. Here, all the common elements can be found in the `auth.py` module.
+
+* **`locustfiles`**: This is where all the actual test modules reside. Test modules import and use the elements that resides in the `commons` directory.
+
 
 ## Run the Load Tests Locally
 
@@ -76,3 +93,7 @@ print(response.text)
     ![Screenshot from 2020-09-05 03-12-25](https://user-images.githubusercontent.com/30027932/92285284-b94ed080-ef25-11ea-9f91-3f972fd844f1.png)
 
 * You can start, stop and control your tests from there.
+
+<div align="center">
+Redowan Delowar
+</div>
