@@ -97,7 +97,7 @@ The test suite consists of three modules — `bdt_convert.py`, `rs_convert.py` a
 
 * [**`locustfile.py`**](): This file imports the TaskSets from the `bdt_convert` and `usd_convert` modules, and creates a [HttpUser](https://docs.locust.io/en/stable/writing-a-locustfile.html#making-http-requests) that will execute the tasks.
 
-### [conf​.​py]()
+### [conf​.​py](./conf.py/)
 
 The **`locust.conf`** file defines the configurations like *hostname*, *number* of *workers*, *number of simulated users*, *spawn rate*, etc.
 
@@ -122,7 +122,7 @@ The **`locust.conf`** file defines the configurations like *hostname*, *number* 
     ./scripts/run.sh -n 4 # number of the workers
     ```
 
-* To access the the Locust GUI, go to [http://localhost:8089/](http://localhost:8089/) on your browser. You'll be prompted to provide a username and a password. Use `ubuntu` as the username and `debian` as the password. You'll be greeted by a screen like this:
+* To access the the Locust GUI, go to [http://localhost:8089/](http://localhost:8089/) on your browser. You'll be prompted to provide a username and a password. Use `ubuntu` as the username and `debian` as the password. You'll be greeted by a screen like below. You should see that the fields of the form are already filled in since Locust pulls the values from the `locust.conf` file:
 
     ![locust signin](https://user-images.githubusercontent.com/30027932/92285103-51988580-ef25-11ea-9155-c9d3f5dcaf42.png)
 
