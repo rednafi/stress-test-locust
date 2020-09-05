@@ -87,7 +87,7 @@ The common elements required for testing, like `login` and `logout` functions re
 ### [locustfiles](./locustfiles/)
 The actual test modules reside in the **`locustfiles`** directory. Test modules import and use the elements that resides in the `commons` directory.
 
-The test suite consists of three modules — `bdt_convert.py`, `rs_convert.py` and `locustfile.py`. The first two files are the test modules and the third file acts as the entrypoint that Locust uses to spin up a server and run the tests.
+The test suite consists of three modules — `bdt_convert.py`, `rs_convert.py` and `locustfile.py`. The first two are the test modules and the third one acts as the entrypoint that Locust uses to spin up a server and run the tests.
 
 * [**`bdt_convert.py`**](./locustfiles/bdt_convert.py/): This module houses a single [TaskSet](https://docs.locust.io/en/stable/writing-a-locustfile.html#taskset-class) named `BDTConvert` that has two [Tasks](https://docs.locust.io/en/stable/writing-a-locustfile.html#tasks) — `usd_to_bdt` and `bdt_to_usd`. The first Task tests the exchange API when the request query asks for USD to BDT conversion and the second Task tests the API while doing BDT to USD conversion.
 
