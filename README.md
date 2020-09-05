@@ -12,6 +12,8 @@
 
 This template uses [Rapid API's](https://rapidapi.com/) currency-exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for showcasing the load testing procedure. The API converts one currency to another using the current exchange rate.
 
+### Anatomy
+
 It takes three parameters in its query string —
 ```
 1. q    : str - quantity
@@ -21,14 +23,33 @@ It takes three parameters in its query string —
 
 And returns the converted value.
 
-Sign up for a Rapid API [account](https://rapidapi.com/signup) and get your token. You can access the API via Python's [HTTPx](https://github.com/encode/httpx) library like this:
+
+### Access the API
+
+Sign up for a Rapid API [account](https://rapidapi.com/signup) and get your token. You can access the API via cURL like (You need to provide your own API key in the header):
+
+```bash
+curl --request GET \
+         --url 'https://currency-exchange.p.rapidapi.com/exchange?q=1.0&from=USD&to=BDT' \
+         --header 'x-rapidapi-host: currency-exchange.p.rapidapi.com' \
+         --header 'x-rapidapi-key: your-api-key'
+```
+
+The response will look like this:
+
+```
+84.91925⏎
+```
+
+Or, you might want to access it in Python. You can do it using the [HTTPx](https://github.com/encode/httpx) library like this:
+
 
 ```python
 import httpx
 
 url = "https://currency-exchange.p.rapidapi.com/exchange"
 
-querystring = {"q": "1.0", "from": "USD", "to": "BDT",}
+querystring = {"q": "1.0", "from": "USD", "to": "BDT"}
 
 headers = {
     "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
