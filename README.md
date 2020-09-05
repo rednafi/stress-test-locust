@@ -97,7 +97,7 @@ The test suite consists of three modules — `bdt_convert.py`, `rs_convert.py` a
 
 * [**`locustfile.py`**](): This file imports the TaskSets from the `bdt_convert` and `usd_convert` modules, and creates a [HttpUser](https://docs.locust.io/en/stable/writing-a-locustfile.html#making-http-requests) that will execute the tasks.
 
-### [conf​.​py](./conf.py/)
+### [conf​.​py](./locust.conf/)
 
 The **`locust.conf`** file defines the configurations like *hostname*, *number* of *workers*, *number of simulated users*, *spawn rate*, etc.
 
