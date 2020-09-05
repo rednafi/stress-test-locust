@@ -86,7 +86,7 @@ The test suite has two primary [bounded contexts](https://martinfowler.com/bliki
 * **`locustfiles`**: This is where all the actual test modules reside. Test modules import and use the elements that resides in the `commons` directory.
 
 
-## Run the Load Tests Locally
+## Run the Stress Tests Locally
 
 * Make sure you've [docker](https://www.docker.com/) and [docker-compose](https://github.com/docker/compose) installed on your machine
 
@@ -115,4 +115,3 @@ The test suite has two primary [bounded contexts](https://martinfowler.com/bliki
     ![Screenshot from 2020-09-05 03-12-25](https://user-images.githubusercontent.com/30027932/92285284-b94ed080-ef25-11ea-9f91-3f972fd844f1.png)
 
 * You can start, stop and control your tests from there.
-
