@@ -145,4 +145,10 @@ The **`locust.conf`** file defines the configurations like *hostname*, *number* 
 * You can start, stop and control your tests from there.
 
 
-Todo: Add deployment notes
+TODO: Add deployment notes
+
+TODO: Add a why not section - why not cookiecutter, why not give the tasks generic names like `task_1`, `task_2` etc, why use a real API and not a dummy API like `https://httpbin/get` etc.
+
+TODO:Better secret handling and API config management with django-environ
+
+
