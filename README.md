@@ -30,7 +30,7 @@ If you're unfamiliar with the terminologies and the generic workflow of writing 
 
 **User:** In Locust, a [User](https://docs.locust.io/en/stable/writing-a-locustfile.html#user-class) is a class that executes the tests either by directly calling the Task methods or via using TaskSets. 
 
-In more complex cases, the tests can further be organized by arranging them in multiple test modules. This template groups the Tasks using TaskSets and places multiple TaskSets in separate test modules to ensure modularity and better scalability. 
+***In more complex cases, the tests can further be organized by arranging them in multiple test modules. This template groups the Tasks using TaskSets and places multiple TaskSets in separate test modules to ensure modularity and better scalability.***
 
 ## Target API
 
