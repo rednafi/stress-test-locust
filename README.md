@@ -50,13 +50,13 @@ And returns the converted value.
 
 ### Access the API
 
-Sign up for a Rapid API [account](https://rapidapi.com/signup) and get your token. You can access the API via cURL like (You need to provide your own API key in the header):
+Sign up for a Rapid API [account](https://rapidapi.com/signup) and get your token. You can access the API via cURL like (You need to provide your own API token in the header):
 
 ```bash
 curl --request GET \
          --url 'https://currency-exchange.p.rapidapi.com/exchange?q=1.0&from=USD&to=BDT' \
          --header 'x-rapidapi-host: currency-exchange.p.rapidapi.com' \
-         --header 'x-rapidapi-key: your-api-key'
+         --header 'x-rapidapi-key: your-api-token'
 ```
 
 The response will look like this:
