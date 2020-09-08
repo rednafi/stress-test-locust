@@ -24,14 +24,13 @@
 
 If you're unfamiliar with the terminologies and the generic workflow of writing stress-tests with Locust, it's highly encouraged that you go through the official [documentation](https://docs.locust.io/en/stable/) first.
 
-**Task:** In Locust, a Task is the smallest unit of a test suite. Usually it means, any function or method that is decorated with the `@task` decorator. Suppose, you're testing the response of an API that can be accessed via the URL: http://localhost:5000/api.
+**Task:** In Locust, a Task is the smallest unit of a test suite. Usually it means, any function or method that is decorated with the `@task` decorator.
 
 **TaskSet:** A TaskSet is a class that establishes a contextual boundary between different groups of Tasks. You can essentially group multiple similar Tasks inside a TaskSet. Then you use the TaskSets from your User class.
 
 **User:** In Locust, a User is a class that executes the tests either by directly calling the Task methods or via using TaskSets. 
 
 In more complex cases, the tests can further be organized by arranging them in multiple test modules. This template groups the Tasks using TaskSets and places multiple TaskSets in separate test modules to ensure modularity and better scalability. 
-
 
 ## Target API
 
