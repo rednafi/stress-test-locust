@@ -24,11 +24,11 @@
 
 If you're unfamiliar with the terminologies and the generic workflow of writing stress-tests with Locust, it's highly encouraged that you go through the official [documentation](https://docs.locust.io/en/stable/) first.
 
-**Task:** In Locust, a Task is the smallest unit of a test suite. Usually it means, any function or method that is decorated with the `@task` decorator.
+**Task:** In Locust, a [Task](https://docs.locust.io/en/stable/writing-a-locustfile.html#tasks) is the smallest unit of a test suite. Usually it means, any function or method that is decorated with the `@task` decorator.
 
-**TaskSet:** A TaskSet is a class that establishes a contextual boundary between different groups of Tasks. You can essentially group multiple similar Tasks inside a TaskSet. Then you use the TaskSets from your User class.
+**TaskSet:** A [TaskSet](https://docs.locust.io/en/stable/writing-a-locustfile.html#taskset-class) is a class that establishes a contextual boundary between different groups of Tasks. You can essentially group multiple similar Tasks inside a TaskSet. Then you use the TaskSets from your User class.
 
-**User:** In Locust, a User is a class that executes the tests either by directly calling the Task methods or via using TaskSets. 
+**User:** In Locust, a [User](https://docs.locust.io/en/stable/writing-a-locustfile.html#user-class) is a class that executes the tests either by directly calling the Task methods or via using TaskSets. 
 
 In more complex cases, the tests can further be organized by arranging them in multiple test modules. This template groups the Tasks using TaskSets and places multiple TaskSets in separate test modules to ensure modularity and better scalability. 
 
@@ -113,7 +113,7 @@ The actual test modules reside in the **`locustfiles`** directory. Test modules 
 
 The test suite consists of three modules — `bdt_convert.py`, `rs_convert.py` and `locustfile.py`. The first two are the test modules and the third one acts as the entrypoint that Locust uses to spin up a server and run the tests.
 
-* [**`bdt_convert.py`**](./locustfiles/bdt_convert.py/): This module houses a single [TaskSet](https://docs.locust.io/en/stable/writing-a-locustfile.html#taskset-class) named `BDTConvert` that has two [Tasks](https://docs.locust.io/en/stable/writing-a-locustfile.html#tasks) — `usd_to_bdt` and `bdt_to_usd`. The first Task tests the exchange API when the request query asks for USD to BDT conversion and the second Task tests the API while doing BDT to USD conversion.
+* [**`bdt_convert.py`**](./locustfiles/bdt_convert.py/): This module houses a single TaskSet named `BDTConvert` that has two Tasks — `usd_to_bdt` and `bdt_to_usd`. The first Task tests the exchange API when the request query asks for USD to BDT conversion and the second Task tests the API while doing BDT to USD conversion.
 
 * [**`rs_convert.py`**](./locustfiles/rs_convert.py/): The second test module is exactly same as the first one; only it tests the API while the request query asks for USD to RS conversion and vice versa.
 
