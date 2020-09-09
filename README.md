@@ -7,6 +7,7 @@
 ## Table of Contents
 
 * [Description](#description)
+* [Locust Terminology](#locust-terminology)
 * [Target API](#target-api)
     * [API Anatomy](#api-anatomy)
     * [Access the API](#access-the-api)
