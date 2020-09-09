@@ -133,6 +133,8 @@ The **`locust.conf`** file defines the configurations like *hostname*, *number* 
 
 * Clone this repository and go to the root directory
 
+* Place your rapidAPI token in the `.env` file
+
 * Run:
 
     ```bash
