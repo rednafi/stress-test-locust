@@ -28,7 +28,7 @@ If you're unfamiliar with the terminologies and the generic workflow of writing 
 
 **TaskSet:** A [TaskSet](https://docs.locust.io/en/stable/writing-a-locustfile.html#taskset-class) is a class that establishes a contextual boundary between different groups of Tasks. You can essentially group multiple similar Tasks inside a TaskSet. Then you use the TaskSets from your User class.
 
-**User:** In Locust, a [User](https://docs.locust.io/en/stable/writing-a-locustfile.html#user-class) is a class that executes the tests either by directly calling the Task methods or via using TaskSets. 
+**User:** In Locust, a [User](https://docs.locust.io/en/stable/writing-a-locustfile.html#user-class) is a class that executes the tests either by directly calling the Task methods or via using TaskSets.
 
 ***In more complex cases, the tests can further be organized by arranging them in multiple test modules. This template groups the Tasks using TaskSets and, places multiple TaskSets in separate test modules to ensure modularity and better scalability.***
 
@@ -93,7 +93,8 @@ Below, you can see the core architecture of the test pipline. For brevity's sake
 ```
 .
 ├── commons             # Common elements required by the test modules
-│   └── auth.py
+│   ├── auth.py         # Auth, login. logout etc
+│   └── settings.py     # Read the environment variables here
 ├── locustfiles         # Primary folder where the tests live
 │   ├── __init__.py
 │   ├── bdt_convert.py  # Test module 1
@@ -157,10 +158,6 @@ The **`locust.conf`** file defines the configurations like *hostname*, *number* 
 * You can start, stop and control your tests from there.
 
 
-TODO: Add deployment notes
+**TODO:** Add deployment notes
 
-TODO: Add a why not section - why not cookiecutter, why not give the tasks generic names like `task_1`, `task_2` etc, why use a real API and not a dummy API like `https://httpbin/get` etc.
-
-TODO:Better secret handling and API config management with django-environ
-
-
+**TODO:** Add a why not section - why not cookiecutter, why not give the tasks generic names like `task_1`, `task_2` etc, why use a real API and not a dummy API like `https://httpbin/get` etc.
