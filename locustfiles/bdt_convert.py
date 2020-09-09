@@ -1,5 +1,6 @@
 from locust import TaskSet, between, task
 
+from commons import settings
 from commons.auth import login, logout
 
 
@@ -19,8 +20,8 @@ class BDTConvert(TaskSet):
         querystring = {"q": "1.0", "from": "USD", "to": "BDT"}
 
         headers = {
-            "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
-            "x-rapidapi-key": "d26533cbe8msh020600a07386d87p18a610jsn31d39f87f802",
+            "x-rapidapi-host": settings.HOST,
+            "x-rapidapi-key": settings.API_TOKEN,
         }
 
         self.client.get(url, headers=headers, params=querystring)
@@ -32,8 +33,8 @@ class BDTConvert(TaskSet):
         querystring = {"q": "1.0", "from": "BDT", "to": "USD"}
 
         headers = {
-            "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
-            "x-rapidapi-key": "d26533cbe8msh020600a07386d87p18a610jsn31d39f87f802",
+            "x-rapidapi-host": settings.HOST,
+            "x-rapidapi-key": settings.API_TOKEN,
         }
 
         self.client.get(url, headers=headers, params=querystring)

@@ -1,6 +1,7 @@
 from locust import TaskSet, between, task
 
 from commons.auth import login, logout
+from commons import settings
 
 
 class RSConvert(TaskSet):
@@ -20,8 +21,8 @@ class RSConvert(TaskSet):
         querystring = {"q": "1.0", "from": "USD", "to": "RS"}
 
         headers = {
-            "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
-            "x-rapidapi-key": "d26533cbe8msh020600a07386d87p18a610jsn31d39f87f802",
+            "x-rapidapi-host": settings.HOST,
+            "x-rapidapi-key": settings.API_TOKEN,
         }
 
         self.client.get(url, headers=headers, params=querystring)
@@ -33,8 +34,8 @@ class RSConvert(TaskSet):
         querystring = {"q": "1.0", "from": "RS", "to": "USD"}
 
         headers = {
-            "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
-            "x-rapidapi-key": "d26533cbe8msh020600a07386d87p18a610jsn31d39f87f802",
+            "x-rapidapi-host": settings.HOST,
+            "x-rapidapi-key": settings.API_TOKEN,
         }
 
         self.client.get(url, headers=headers, params=querystring)

@@ -11,9 +11,13 @@ services:
     volumes:
       - ./:/code/
     command: -f /code/locustfiles/locustfile.py --master
+    env_file:
+      - .env
 
   worker:
     image: rednafi/locust-template:v1
     volumes:
       - ./:/code/
     command: -f /code/locustfiles/locustfile.py --worker --master-host master
+    env_file:
+      - .env

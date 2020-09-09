@@ -8,6 +8,7 @@ certifi==2020.6.20        # via geventhttpclient, requests
 chardet==3.0.4            # via requests
 click==7.1.2              # via flask
 configargparse==1.2.3     # via locust
+django-environ==0.4.5     # via -r requirements.in
 flask-basicauth==0.2.0    # via locust
 flask==1.1.2              # via flask-basicauth, locust
 gevent==20.6.2            # via geventhttpclient, locust
