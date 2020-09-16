@@ -163,7 +163,3 @@ The **`locust.conf`** file defines the configurations like *hostname*, *number* 
 
 ## ⚠️ Disclaimer
 This dockerized application is production-ready. However, you shouldn't expose your environment file (.env) in production. Here, it was done only for demonstration purposes.
-
-**TODO:** Add deployment notes
-
-**TODO:** Add a why not section - why not cookiecutter, why not give the tasks generic names like `task_1`, `task_2` etc, why use a real API and not a dummy API like `https://httpbin/get` etc.
