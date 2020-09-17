@@ -130,11 +130,11 @@ The **`locust.conf`** file defines the configurations like *hostname*, *number* 
 
 ## 🧪 Run the Stress Tests Locally
 
-* Make sure you've [docker](https://www.docker.com/) and [docker-compose](https://github.com/docker/compose) installed on your machine
+* Make sure you've [docker](https://www.docker.com/) and [docker-compose](https://github.com/docker/compose) installed on your machine.
 
-* Clone this repository and go to the root directory
+* Clone this repository and go to the root directory.
 
-* Place your rapidAPI token in the `.env` file
+* Place your rapidAPI token in the `.env` file.
 
 * Run:
 
