@@ -1,7 +1,7 @@
 from locust import TaskSet, between, task
 
-from commons.auth import login, logout
 from commons import settings
+from commons.auth import login, logout
 
 
 class RSConvert(TaskSet):
