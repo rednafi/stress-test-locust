@@ -19,7 +19,7 @@ lint: venvcheck		## Run Black and Isort linters
 	@isort .
 
 upgrade: venvcheck	## Upgrade the dependencies
-	pip-compile --upgrade requirements.in
+	@poetry update && poetry export  -f requirements.txt -o requirements.txt --without-hashes
 
 downgrade: venvcheck ## Downgrade the dependencies
 	git checkout requirements.txt
