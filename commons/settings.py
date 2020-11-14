@@ -1,17 +1,12 @@
 from pathlib import Path
 
-import environ
+from konfik import Konfik
 
 BASE_DIR = Path(__file__, resolve=True).parent.parent
 ENV_FILE = BASE_DIR / ".env"
 
-env = environ.Env(
-    # set casting, default value
-    HOST=str,
-    API_TOKEN=str,
-)
-# reading .env file
-environ.Env.read_env(str(ENV_FILE))
+konfik = Konfik(config_path=ENV_FILE)
+config = konfik.config
 
-HOST = env("HOST")
-API_TOKEN = env("API_TOKEN")
+HOST = config.HOST
+API_TOKEN = config.API_TOKEN

@@ -1,6 +1,6 @@
 def login():
-    print("Logging in")
+    print("Logging in...")
 
 
 def logout():
-    print("Logging out")
+    print("Logging out...")
