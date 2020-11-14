@@ -1,12 +1,12 @@
 # Use the latest locust image
 FROM locustio/locust
 
-# Set environment variables
-ENV PYTHONWRITEBYTECODE 1
-ENV PYTHONBUFFERED 1
-
 # Set working directory
 WORKDIR /code
+
+# This is where the modules get installed so it's a good
+# idea to add that to the $PATH
+ENV PATH /home/locust/.local/bin:$PATH
 
 # Install dependencies
 COPY requirements.txt /code/

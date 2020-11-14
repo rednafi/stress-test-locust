@@ -191,7 +191,7 @@ i18n = ["Babel (>=0.8)"]
 
 [[package]]
 name = "konfik"
-version = "2.0.1"
+version = "2.0.2"
 description = "The Strangely Familiar Config Parser"
 category = "main"
 optional = false
@@ -199,9 +199,9 @@ python-versions = ">=3.6,<4.0"
 
 [package.dependencies]
 Pygments = ">=2.7.2,<3.0.0"
-python-dotenv = ">=0.14.0,<0.15.0"
+python-dotenv = ">=0.15.0,<0.16.0"
 PyYAML = ">=5.3.1,<6.0.0"
-toml = ">=0.10.1,<0.11.0"
+toml = ">=0.10.2,<0.11.0"
 
 [[package]]
 name = "locust"
@@ -293,7 +293,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "python-dotenv"
-version = "0.14.0"
+version = "0.15.0"
 description = "Add .env support to your django/flask apps in development and deployments"
 category = "main"
 optional = false
@@ -441,7 +441,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "0e84d2ef2d74c19825b5db72b2018980f127c547a623b6d197b0e694a2cda347"
+content-hash = "471d3fe9eee7a94c0db0e376929bce7acc40064996a9adaf2c984874dcaac9a2"
 
 [metadata.files]
 appdirs = [
@@ -622,8 +622,8 @@ jinja2 = [
     {file = "Jinja2-2.11.2.tar.gz", hash = "sha256:89aab215427ef59c34ad58735269eb58b1a5808103067f7bb9d5836c651b3bb0"},
 ]
 konfik = [
-    {file = "konfik-2.0.1-py3-none-any.whl", hash = "sha256:1e683c74207f8f390703d3fcb5aa10eb3f5b38be71bd6fdc2a87271118e5396b"},
-    {file = "konfik-2.0.1.tar.gz", hash = "sha256:aab64ba3555fc716a27da202f404737d52bc845ec6cb254bc2c0b7c93ec8862d"},
+    {file = "konfik-2.0.2-py3-none-any.whl", hash = "sha256:b60c36abfffb6e17433ac7aa4a90905b74aa34bd632d8d12d85825f5c37fc027"},
+    {file = "konfik-2.0.2.tar.gz", hash = "sha256:ced51afc7da47b5bca768f4c5e35338d8ed7d07b60c3b01ad2d5c8198d6134ec"},
 ]
 locust = [
     {file = "locust-1.4.0-py3-none-any.whl", hash = "sha256:0325877607c7b1085d40fc99fb48e9b779e510e7dda8dc8adc1b8e6336ab53af"},
@@ -718,8 +718,8 @@ pygments = [
     {file = "Pygments-2.7.2.tar.gz", hash = "sha256:381985fcc551eb9d37c52088a32914e00517e57f4a21609f48141ba08e193fa0"},
 ]
 python-dotenv = [
-    {file = "python-dotenv-0.14.0.tar.gz", hash = "sha256:8c10c99a1b25d9a68058a1ad6f90381a62ba68230ca93966882a4dbc3bc9c33d"},
-    {file = "python_dotenv-0.14.0-py2.py3-none-any.whl", hash = "sha256:c10863aee750ad720f4f43436565e4c1698798d763b63234fb5021b6c616e423"},
+    {file = "python-dotenv-0.15.0.tar.gz", hash = "sha256:587825ed60b1711daea4832cf37524dfd404325b7db5e25ebe88c495c9f807a0"},
+    {file = "python_dotenv-0.15.0-py2.py3-none-any.whl", hash = "sha256:0c8d1b80d1a1e91717ea7d526178e3882732420b03f08afea0406db6402e220e"},
 ]
 pywin32 = [
     {file = "pywin32-300-cp35-cp35m-win32.whl", hash = "sha256:1c204a81daed2089e55d11eefa4826c05e604d27fe2be40b6bf8db7b6a39da63"},
