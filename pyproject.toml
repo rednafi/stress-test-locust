@@ -6,7 +6,7 @@ authors = ["rednafi <redowan.nafi@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 locust = "^1.4.1"
 konfik = "^2.0.3"
 
