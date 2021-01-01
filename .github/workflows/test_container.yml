@@ -42,8 +42,8 @@ jobs:
         run: |
           echo "Checking Isort formatting..."
           poetry run isort --profile black --check .
-          
+
       - name: Run the tests & Generate coverage report
         run: |
           poetry run locust -f locustfiles/locustfile.py \
-          --headless -u 10 -r 10 --run-time=5 --exit-code-on-error 1
+          --headless -u 1 -r 5 --run-time=5 --exit-code-on-error 1
