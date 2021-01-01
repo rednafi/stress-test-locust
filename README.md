@@ -4,7 +4,7 @@
 
 </div>
 
-## 🌲 Table of Contents
+## Table of Contents
 
 * [Description](#description)
 * [Locust Terminology](#locust-terminology)
@@ -17,11 +17,11 @@
     * [locust.conf](#locustconf)
 * [Run the Stress Tests Locally](#run-the-stress-tests-locally)
 
-## 📚 Description
+## Description
 
 [Locust](https://locust.io/) is a distributed and scalable open-source library that lets you do effective load testing in pure Python. This repository demonstrates a modular architecture to establish a template for quickly building a scalable stress testing pipeline using Locust.
 
-## 🐞 Locust Terminology
+## Locust Terminology
 
 If you're unfamiliar with the terminologies and the generic workflow of writing stress-tests with Locust, it's highly encouraged that you go through the official [documentation](https://docs.locust.io/en/stable/) first.
 
@@ -33,11 +33,11 @@ If you're unfamiliar with the terminologies and the generic workflow of writing 
 
 ***In more complex cases, the tests can further be organized by arranging them in multiple test modules. This template groups the Tasks using TaskSets and places multiple TaskSets in separate test modules to ensure modularity and better scalability.***
 
-## 🏹 Target API
+## Target API
 
 This template uses [Rapid API's](https://rapidapi.com/) currency-exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for showcasing the load testing procedure. The API converts one currency to another using the current exchange rate.
 
-### 💡 API Anatomy
+### API Anatomy
 
 It takes three parameters in its query string —
 ```
@@ -49,7 +49,7 @@ It takes three parameters in its query string —
 And returns the converted value.
 
 
-### 🚪 Access the API
+### Access the API
 
 Sign up for a Rapid API [account](https://rapidapi.com/signup) and get your token. You can access the API via cURL like (You need to provide your API token in the header):
 
@@ -87,7 +87,7 @@ with httpx.Client() as client:
 print(response.text)
 ```
 
-## ⚗️ Stress Testing Pipeline
+## Stress Testing Pipeline
 
 Below, you can see the core architecture of the test pipeline. For brevity's sake — files regarding containerization, deployment, and dependency management have been omitted.
 
@@ -128,7 +128,7 @@ The test suite consists of three modules — `bdt_convert.py`, `rs_convert.py`, 
 The **`locust.conf`** file defines the configurations like *hostname*, *number* of *workers*, *number of simulated users*, *spawn rate*, etc.
 
 
-## 🧪 Run the Stress Tests Locally
+## Run the Stress Tests Locally
 
 * Make sure you've [docker](https://www.docker.com/) and [docker-compose](https://github.com/docker/compose) installed on your machine.
 
@@ -161,5 +161,5 @@ The **`locust.conf`** file defines the configurations like *hostname*, *number* 
 * You can start, stop and control your tests from there.
 
 
-## ⚠️ Disclaimer
+## Disclaimer
 This dockerized application is production-ready. However, you shouldn't expose your environment file (.env) in production. Here, it was done only for demonstration purposes.
