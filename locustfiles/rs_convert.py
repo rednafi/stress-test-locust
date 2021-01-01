@@ -47,7 +47,6 @@ class RSConvert(TaskSet):
 
         self.interrupt()
 
-    @task
     def on_stop(self):
         """Logout and stuff after ending a user session."""
         logout()

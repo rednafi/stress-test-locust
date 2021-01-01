@@ -1,4 +1,5 @@
 from locust import TaskSet, between, task
+from locust.exception import StopUser
 
 from commons import settings
 from commons.auth import login, logout
@@ -24,7 +25,9 @@ class BDTConvert(TaskSet):
             "x-rapidapi-key": settings.API_TOKEN,
         }
 
-        self.client.get(url, headers=headers, params=querystring)
+        response = self.client.get(url, headers=headers, params=querystring)
+        if response.status_code != 200:
+            raise StopUser()
 
     @task
     def bdt_to_usd(self):
@@ -46,7 +49,6 @@ class BDTConvert(TaskSet):
 
         self.interrupt()
 
-    @task
     def on_stop(self):
         """Logout and stuff after ending a user session."""
         logout()
