@@ -7,12 +7,18 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-locust = "^1.4.1"
-konfik = "^2.0.3"
+locust = "^1.4.3"
+konfik = "^2.0.5"
+black = "^20.8b1"
+isort = "^5.7.0"
+httpx = "^0.16.1"
+pytest = "^6.2.2"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
 isort = "^5.6.4"
+httpx = "^0.16.1"
+pytest = "^6.2.2"
 
 
 [build-system]
