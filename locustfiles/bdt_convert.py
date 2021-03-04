@@ -31,7 +31,7 @@ class BDTConvert(TaskSet):
             catch_response=True,
         ) as response:
             if response.status_code == 200:
-                response.success("Success!")
+                response.success()
             else:
                 response.failure(f"Failed! Http Code `{response.status_code}`")
         return
@@ -54,7 +54,7 @@ class BDTConvert(TaskSet):
             catch_response=True,
         ) as response:
             if response.status_code == 200:
-                response.success("Success!")
+                response.success()
             else:
                 response.failure(f"Failed! Http Code `{response.status_code}`")
         return
