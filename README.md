@@ -93,7 +93,7 @@ Below, you can see the core architecture of the test pipeline. For brevity's sak
 
 ```
 .
-├── commons             # Common elements required by the test modules
+├── common              # Common elements required by the test modules
 │   ├── auth.py         # Auth, login, logout etc
 │   └── settings.py     # Read the environment variables here
 ├── locustfiles         # Primary folder where the tests live
@@ -107,8 +107,8 @@ Below, you can see the core architecture of the test pipeline. For brevity's sak
 The test suite has three primary components —
 `commons`, `locustfiles` and the `locust.conf` file.
 
-### [commons](./commons/)
-The common elements required for testing, like `login` and `logout` functions reside in the **`commons`** directory. Here, all the common elements are arranged in the `auth.py` module.
+### [common](./common/)
+The common elements required for testing, like `login` and `logout` functions reside in the **`common`** directory. Here, all the common elements are arranged in the `auth.py` module.
 
 ### [locustfiles](./locustfiles/)
 The actual test modules reside in the **`locustfiles`** directory. Test modules import and use the elements that reside in the `commons` directory.

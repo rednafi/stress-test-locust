@@ -1,8 +1,7 @@
 from locust import TaskSet, between, task
-from locust.exception import StopUser
 
-from commons import settings
-from commons.auth import login, logout
+from common import settings
+from common.auth import login, logout
 
 
 class BDTConvert(TaskSet):
@@ -25,9 +24,12 @@ class BDTConvert(TaskSet):
             "x-rapidapi-key": settings.API_TOKEN,
         }
 
-        response = self.client.get(url, headers=headers, params=querystring)
-        if response.status_code != 200:
-            raise StopUser()
+        with self.client.get(url, headers=headers, params=querystring) as response:
+            if response.status_code == 200:
+                response.success("Success!")
+            else:
+                response.failure(f"Failed! Http Code `{response.status_code}`")
+        return
 
     @task
     def bdt_to_usd(self):
@@ -40,7 +42,12 @@ class BDTConvert(TaskSet):
             "x-rapidapi-key": settings.API_TOKEN,
         }
 
-        self.client.get(url, headers=headers, params=querystring)
+        with self.client.get(url, headers=headers, params=querystring) as response:
+            if response.status_code == 200:
+                response.success("Success!")
+            else:
+                response.failure(f"Failed! Http Code `{response.status_code}`")
+        return
 
     @task
     def stop(self):

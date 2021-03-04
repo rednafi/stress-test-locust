@@ -1,7 +1,6 @@
 import logging
 
 import httpx
-
 from commons import settings
 
 logging.basicConfig(level=logging.INFO)
