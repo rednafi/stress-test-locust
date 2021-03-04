@@ -25,9 +25,14 @@ class RSConvert(TaskSet):
             "x-rapidapi-key": settings.API_TOKEN,
         }
 
-        with self.client.get(url, headers=headers, params=querystring) as response:
+        with self.client.get(
+            url,
+            headers=headers,
+            params=querystring,
+            catch_response=True,
+        ) as response:
             if response.status_code == 200:
-                response.success("Success!")
+                response.success()
             else:
                 response.failure(f"Failed! Http Code `{response.status_code}`")
         return
@@ -43,7 +48,12 @@ class RSConvert(TaskSet):
             "x-rapidapi-key": settings.API_TOKEN,
         }
 
-        with self.client.get(url, headers=headers, params=querystring) as response:
+        with self.client.get(
+            url,
+            headers=headers,
+            params=querystring,
+            catch_response=True,
+        ) as response:
             if response.status_code == 200:
                 response.success("Success!")
             else:

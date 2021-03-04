@@ -24,7 +24,12 @@ class BDTConvert(TaskSet):
             "x-rapidapi-key": settings.API_TOKEN,
         }
 
-        with self.client.get(url, headers=headers, params=querystring) as response:
+        with self.client.get(
+            url,
+            headers=headers,
+            params=querystring,
+            catch_response=True,
+        ) as response:
             if response.status_code == 200:
                 response.success("Success!")
             else:
@@ -42,7 +47,12 @@ class BDTConvert(TaskSet):
             "x-rapidapi-key": settings.API_TOKEN,
         }
 
-        with self.client.get(url, headers=headers, params=querystring) as response:
+        with self.client.get(
+            url,
+            headers=headers,
+            params=querystring,
+            catch_response=True,
+        ) as response:
             if response.status_code == 200:
                 response.success("Success!")
             else:
