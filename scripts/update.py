@@ -2,7 +2,6 @@
 
 import subprocess
 import sys
-from re import sub
 
 import toml
 
