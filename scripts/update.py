@@ -4,14 +4,21 @@ import subprocess
 import sys
 
 import toml
+import shlex
 
 
 class UpdateDeps:
     """Automatically updating the dependencies, and revert if the tests fail."""
 
-    def __init__(self, dep_file="pyproject.toml", lock_file="poetry.lock"):
+    def __init__(
+        self,
+        dep_file="pyproject.toml",
+        lock_file="poetry.lock",
+        req_file="requirements.txt",
+    ):
         self.dep_file = dep_file
         self.lock_file = lock_file
+        self.req_file = req_file
 
     @staticmethod
     def is_env_active():
@@ -26,7 +33,7 @@ class UpdateDeps:
     @staticmethod
     def revert_changes(filename):
         print(f"Reverting file {filename} to HEAD...\n")
-        subprocess.run(["git", "checkout", "HEAD", "--", filename])
+        subprocess.run(shlex.split(f"git checkout HEAD -- {filename}"))
 
     def update_deps(self):
         with open(self.dep_file, "r") as f:
@@ -39,21 +46,18 @@ class UpdateDeps:
                 if k.lower() == "python":
                     continue
 
-                subprocess.run(["poetry", "add", f"{k}@latest"])
+                subprocess.run(shlex.split(f"poetry add {k}@latest"))
+                subprocess.run(
+                    shlex.split(
+                        "poetry export -f requirements.txt -o requirements.txt --without-hashes"
+                    )
+                )
 
     def run_tests(self):
         print("Running the tests...\n")
 
-        subprocess.run(
-            [
-                "docker-compose",
-                "-f",
-                "docker-compose.yml",
-                "up",
-                "-d",
-            ]
-        )
-        result = subprocess.run(["pytest", "-v"], capture_output=True)
+        subprocess.run(shlex.split("docker-compose -f docker-compose.yml up -d"))
+        result = subprocess.run(shlex.split("pytest -v"), capture_output=True)
 
         if "FAILED" in str(result.stdout):
             print(
@@ -61,15 +65,9 @@ class UpdateDeps:
             )
             self.revert_changes(self.dep_file)
             self.revert_changes(self.lock_file)
+            self.revert_changes(self.req_file)
 
-        subprocess.run(
-            [
-                "docker-compose",
-                "-f",
-                "docker-compose.yml",
-                "down",
-            ]
-        )
+        subprocess.run(shlex.split("docker-compose -f docker-compose.yml down"))
 
         print("Tests ran successfully. Your dependencies are now up to date.")
 
