@@ -1,10 +1,10 @@
 #!/bin/python3
 
+import shlex
 import subprocess
 import sys
 
 import toml
-import shlex
 
 
 class UpdateDeps:
