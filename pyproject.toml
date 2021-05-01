@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-locust = "^1.4.3"
+locust = "^1.4.4"
 konfik = "^2.0.5"
 isort = "^5.8.0"
 httpx = "^0.17.1"
