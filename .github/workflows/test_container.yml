@@ -28,22 +28,23 @@ jobs:
         run: |
           echo "Upgrading pip ...."
           python -m pip install --upgrade pip
-          echo "Installing poetry..."
-          pip install poetry
-          echo "Installing the dependencies..."
-          poetry install
+          python3 -m pip install -r requirements.txt && pip install -r requirements-dev.txt
 
-      - name: Check Black Formatting
+      - name: Check Linter
         run: |
           echo "Checking black formatting..."
-          poetry run black --check .
+          python3 -m black --check .
 
-      - name: Check Isort Formatting
-        run: |
-          echo "Checking Isort formatting..."
-          poetry run isort --profile black --check .
+          echo "Checking isort formatting..."
+          python3 -m isort --check .
+
+          echo "Checking flake8 formatting..."
+          python3 -m flake8 .
+
+          echo "Checking mypy formatting..."
+          python3 -m mypy .
 
       - name: Run the tests & Generate coverage report
         run: |
-          poetry run locust -f locustfiles/locustfile.py \
+          python3 -m locust -f locustfiles/locustfile.py \
           --headless -u 1 -r 5 --run-time=5 --exit-code-on-error 1
