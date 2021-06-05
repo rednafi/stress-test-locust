@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from locust import TaskSet, between, task
 
 from common import settings
@@ -9,12 +11,12 @@ class BDTConvert(TaskSet):
 
     wait_time = between(1, 3)
 
-    def on_start(self):
+    def on_start(self) -> None:
         """Logins and stuff before starting a user session."""
         login()
 
     @task
-    def usd_to_bdt(self):
+    def usd_to_bdt(self) -> None:
         url = "exchange"
 
         querystring = {"q": "1.0", "from": "USD", "to": "BDT"}
@@ -37,7 +39,7 @@ class BDTConvert(TaskSet):
         return
 
     @task
-    def bdt_to_usd(self):
+    def bdt_to_usd(self) -> None:
         url = "exchange"
 
         querystring = {"q": "1.0", "from": "BDT", "to": "USD"}
@@ -60,12 +62,12 @@ class BDTConvert(TaskSet):
         return
 
     @task
-    def stop(self):
+    def stop(self) -> None:
         """TaskSet objects don't know when to hand over control
         to the parent class. This method does exactly that."""
 
         self.interrupt()
 
-    def on_stop(self):
+    def on_stop(self) -> None:
         """Logout and stuff after ending a user session."""
         logout()
