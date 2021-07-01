@@ -18,16 +18,16 @@ flake8==3.9.2
     # via -r requirements-dev.in
 iniconfig==1.1.1
     # via pytest
-isort==5.8.0
+isort==5.9.1
     # via -r requirements-dev.in
 mccabe==0.6.1
     # via flake8
+mypy==0.812
+    # via -r requirements-dev.in
 mypy-extensions==0.4.3
     # via
     #   black
     #   mypy
-mypy==0.812
-    # via -r requirements-dev.in
 packaging==20.9
     # via pytest
 pathspec==0.8.1
