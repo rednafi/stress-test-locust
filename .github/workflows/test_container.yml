@@ -41,8 +41,6 @@ jobs:
           echo "Checking flake8 formatting..."
           python3 -m flake8 .
 
-          echo "Checking mypy formatting..."
-          python3 -m mypy .
 
       - name: Run the tests & Generate coverage report
         run: |
