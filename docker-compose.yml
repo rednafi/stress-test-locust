@@ -1,8 +1,7 @@
-version: '3.7'
+version: '3.9'
 
 services:
   master:
-    image: rednafi/locust-template:v1
     container_name: locust-master
     build:
       context: ./
@@ -15,9 +14,12 @@ services:
       - .env
 
   worker:
-    image: rednafi/locust-template:v1
     volumes:
       - ./:/code/
+    build:
+      context: ./
     command: -f /code/locustfiles/locustfile.py --worker --master-host master
     env_file:
       - .env
+    depends_on:
+      - master
