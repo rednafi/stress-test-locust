@@ -6,6 +6,8 @@
 #
 anyio==3.2.1
     # via httpcore
+brotli==1.0.9
+    # via geventhttpclient
 certifi==2021.5.30
     # via
     #   geventhttpclient
@@ -19,7 +21,7 @@ click==8.0.1
     # via flask
 configargparse==1.5.1
     # via locust
-flask==1.1.2
+flask==2.0.1
     # via
     #   flask-basicauth
     #   flask-cors
@@ -32,7 +34,7 @@ gevent==21.1.2
     # via
     #   geventhttpclient
     #   locust
-geventhttpclient==1.4.4
+geventhttpclient==1.5.1
     # via locust
 greenlet==1.1.0
     # via gevent
@@ -53,7 +55,7 @@ jinja2==3.0.1
     # via flask
 konfik==2.0.5
     # via -r requirements.in
-locust==1.6.0
+locust==2.2.0
     # via -r requirements.in
 markupsafe==2.0.1
     # via jinja2
@@ -67,12 +69,14 @@ python-dotenv==0.15.0
     # via konfik
 pyyaml==5.4.1
     # via konfik
-pyzmq==22.1.0
+pyzmq==22.2.1
     # via locust
 requests==2.25.1
     # via locust
 rfc3986[idna2008]==1.5.0
     # via httpx
+roundrobin==0.0.2
+    # via locust
 six==1.16.0
     # via
     #   flask-cors
