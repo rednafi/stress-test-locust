@@ -4,11 +4,9 @@
 #
 #    pip-compile requirements-dev.in
 #
-appdirs==1.4.4
-    # via black
 attrs==21.2.0
     # via pytest
-black==21.7b0
+black==21.8b0
     # via -r requirements-dev.in
 click==8.0.1
     # via
@@ -30,12 +28,14 @@ mypy-extensions==0.4.3
     #   mypy
 packaging==21.0
     # via pytest
-pathspec==0.8.1
+pathspec==0.9.0
     # via black
 pep517==0.10.0
     # via pip-tools
 pip-tools==6.2.0
     # via -r requirements-dev.in
+platformdirs==2.3.0
+    # via black
 pluggy==0.13.1
     # via pytest
 py==1.10.0
@@ -58,7 +58,9 @@ toml==0.10.2
 tomli==1.2.0
     # via black
 typing-extensions==3.10.0.0
-    # via mypy
+    # via
+    #   black
+    #   mypy
 wheel==0.36.2
     # via pip-tools
 
