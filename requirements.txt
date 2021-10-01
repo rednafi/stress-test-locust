@@ -55,7 +55,7 @@ jinja2==3.0.1
     # via flask
 konfik==2.0.5
     # via -r requirements.in
-locust==2.2.0
+locust==2.2.3
     # via -r requirements.in
 markupsafe==2.0.1
     # via jinja2
