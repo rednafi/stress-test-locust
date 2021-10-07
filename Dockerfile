@@ -1,5 +1,5 @@
 # Use the latest locust image
-FROM locustio/locust
+FROM python:3.9.7-slim-bullseye
 
 # Set working directory
 WORKDIR /code
@@ -14,3 +14,12 @@ RUN pip install -r requirements.txt
 
 # Copy project
 COPY . /code
+
+EXPOSE 8089 5557
+
+RUN useradd --create-home locust
+USER locust
+WORKDIR /home/locust
+
+# Turn off python output buffering.
+ENV PYTHONUNBUFFERED=1
