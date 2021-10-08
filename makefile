@@ -55,6 +55,7 @@ mypy: ## Apply mypy
 	@echo "Applying mypy..."
 	@echo "================="
 	@echo
+	@echo y | mypy $(path) --install-types
 	@mypy $(path)
 
 
@@ -70,9 +71,8 @@ trim-imports: ## Remove unused imports
 .PHONY: dep-lock
 dep-lock: ## Freeze deps in `requirements.txt` file
 	@sort --ignore-case -o requirements.in requirements.in
-	@pip-compile requirements.in --output-file=requirements.txt
-	@pip-compile requirements-dev.in --output-file=requirements-dev.txt
-
+	@pip-compile requirements.in -o requirements.txt
+	@pip-compile requirements-dev.in -o requirements-dev.txt
 
 
 .PHONY: dep-sync
