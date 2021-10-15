@@ -4,26 +4,14 @@
 
 </div>
 
-## Table of Contents
-
-* [Description](#description)
-* [Locust Terminology](#locust-terminology)
-* [Target API](#target-api)
-    * [API Anatomy](#api-anatomy)
-    * [Access the API](#access-the-api)
-* [Stress Testing Pipeline](#stress-testing-pipeline)
-    * [commons](#commons)
-    * [locustfiles](#locustfiles)
-    * [locust.conf](#locustconf)
-* [Run the Stress Tests Locally](#run-the-stress-tests-locally)
 
 ## Description
 
-[Locust](https://locust.io/) is a distributed and scalable open-source library that lets you do effective load testing in pure Python. This repository demonstrates a modular architecture to establish a template for quickly building a scalable stress testing pipeline using Locust.
+[Locust](https://locust.io/) is a distributed and scalable open-source library that helps you write effective load tests in pure Python. This repository demonstrates a modular architecture to establish a template for quickly building a scalable stress testing pipeline with Locust.
 
 ## Locust Terminology
 
-If you're unfamiliar with the terminologies and the generic workflow of writing stress-tests with Locust, it's highly encouraged that you go through the official [documentation](https://docs.locust.io/en/stable/) first.
+If you're unfamiliar with the terminologies and the generic workflow of writing stress-tests with Locust, then you should go through the official [documentation](https://docs.locust.io/en/stable/) first. With that out of the way, let's go through a few terminologies that comes up in this context quite often:
 
 **Task:** In Locust, a [Task](https://docs.locust.io/en/stable/writing-a-locustfile.html#tasks) is the smallest unit of a test suite. Usually, it means, any function or method that is decorated with the `@task` decorator.
 
@@ -39,7 +27,7 @@ This template uses [Rapid API's](https://rapidapi.com/) currency-exchange [API](
 
 ### API Anatomy
 
-It takes three parameters in its query string —
+It takes three parameters in its query string:
 ```
 1. q    : str - quantity
 2. from : str - currency to convert from
@@ -81,7 +69,7 @@ headers = {
     "x-rapidapi-key": "your-api-token",
 }
 
-with httpx.Client() as client:
+with httpx.Client(http2=True) as client:
     response = client.get(url, headers=headers, params=querystring)
 
 print(response.text)
@@ -89,48 +77,49 @@ print(response.text)
 
 ## Stress Testing Pipeline
 
-Below, you can see the core architecture of the test pipeline. For brevity's sake — files regarding containerization, deployment, and dependency management have been omitted.
+Below, you can see the core architecture of the load testing pipeline. For brevity's sake—files regarding containerization, deployment, and dependency management have been omitted.
+
 
 ```
-.
-├── common              # Common elements required by the test modules
-│   ├── auth.py         # Auth, login, logout etc
-│   └── settings.py     # Read the environment variables here
-├── locustfiles         # Primary folder where the tests live
+src/
+├── locustfiles         # Directir where the load test modules live
 │   ├── __init__.py
-│   ├── bdt_convert.py  # Test module 1
-│   ├── rs_convert.py   # Test module 2
-│   └── locustfile.py   # Locust entrypoint
-└── locust.conf         # Locust configuration file
+│   ├── bdt_convert.py  # Load test module 1
+│   └── rs_convert.py   # Load test module 2
+├── __init__.py
+├── auth.py             # Auth, login, logout, etc
+├── locust.conf         # Locust configurations
+├── locustfile.py       # Locust entrypoint
+└── settings.py         # Read the environment variables here
 ```
 
-The test suite has three primary components —
-`commons`, `locustfiles` and the `locust.conf` file.
+The test suite has three primary components—
+`setup.py`, `locustfiles`, and the `locust.conf` file.
 
-### [common](./common/)
-The common elements required for testing, like `login` and `logout` functions reside in the **`common`** directory. Here, all the common elements are arranged in the `auth.py` module.
+### [setup.py](src/setup.py)
+The common elements required for testing, like `auth`, `login`, and `logout` functions reside in the `setup.py` file.
 
-### [locustfiles](./locustfiles/)
-The actual test modules reside in the **`locustfiles`** directory. Test modules import and use the elements that reside in the `commons` directory.
+### [locustfiles](src/locustfiles/)
+The load test modules reside in the **`locustfiles`** directory. Test modules import and use the functions in the `setup.py` file before executing each test.
 
-The test suite consists of three modules — `bdt_convert.py`, `rs_convert.py`, and `locustfile.py`. The first two are the test modules and the third one acts as the entrypoint that Locust uses to spin up a server and run the tests.
+In the `locustfiles` directory, currently, there are only two load test modules—`bdt_convert.py` and `rs_convert.py`. You can name your test modules whatever you want and the load testing classes and functions should reside here.
 
-* [**`bdt_convert.py`**](./locustfiles/bdt_convert.py/): This module houses a single TaskSet named `BDTConvert` that has two Tasks — `usd_to_bdt` and `bdt_to_usd`. The first Task tests the exchange API when the request query asks for USD to BDT conversion and the second Task tests the API while doing BDT to USD conversion.
+* [bdt_convert.py](src/locustfiles/bdt_convert.py): This module houses a single TaskSet named `BDTConvert` that has two Tasks—`usd_to_bdt` and `bdt_to_usd`. The first Task tests the exchange API when the request query asks for USD to BDT currency conversion and the second Task tests the API while requesting BDT to USD conversion.
 
-* [**`rs_convert.py`**](./locustfiles/rs_convert.py/): The second test module is exactly the same as the first one; only it tests the API while the request query asks for USD to RS conversion and vice versa.
+* [rs_convert.py](src/locustfiles/rs_convert.py): The second test module does the same things as the first one; only it tests the APIs while the request query asks for USD to RS conversion and vice versa.
 
     The reason that there are two similar test modules is just to demonstrate how you can organize your Tasks, TaskSets, and test modules.
 
-* [**`locustfile.py`**](): This file imports the TaskSets from the `bdt_convert` and `usd_convert` modules, and creates a [HttpUser](https://docs.locust.io/en/stable/writing-a-locustfile.html#making-http-requests) that will execute the tasks.
+* [locustfile.py](src/locustfile.py): This file works as the entrypoint of the workflow. It imports the TaskSets from the `bdt_convert` and `usd_convert` modules and creates a [HttpUser](https://docs.locust.io/en/stable/writing-a-locustfile.html#making-http-requests) that will execute the tasks.
 
-### [locust.conf](./locust.conf/)
+### [locust.conf](src/locust.conf)
 
 The **`locust.conf`** file defines the configurations like *hostname*, *number* of *workers*, *number of simulated users*, *spawn rate*, etc.
 
 
 ## Run the Stress Tests Locally
 
-* Make sure you've [docker](https://www.docker.com/) and [docker-compose](https://github.com/docker/compose) installed on your machine.
+* Make sure you have [docker](https://www.docker.com/) and [docker-compose v2](https://github.com/docker/compose) installed on your machine.
 
 * Clone this repository and go to the root directory.
 
@@ -139,15 +128,13 @@ The **`locust.conf`** file defines the configurations like *hostname*, *number* 
 * Run:
 
     ```bash
-    sudo chmod +x scripts/run.sh
-    ./scripts/run.sh
+    docker compose up -d
     ```
 
     This will spin up a master container and a single worker container that will do the testing. If you want to deploy more workers to do the load testing then run:
 
     ```bash
-    sudo chmod +x scripts/run.sh
-    ./scripts/run.sh -n 4 # number of the workers
+    docker compose up -d --scale worker 2
     ```
 
 * To access the Locust GUI, go to [http://localhost:8089/](http://localhost:8089/) on your browser. You'll be prompted to provide a username and a password. Use `ubuntu` as the username and `debian` as the password. You'll be greeted by a screen like below. You should see that the fields of the form are already filled in since Locust pulls the values from the `locust.conf` file:

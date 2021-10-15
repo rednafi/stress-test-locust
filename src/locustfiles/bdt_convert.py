@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+from http import HTTPStatus
+
 from locust import TaskSet, between, task
 
-from common import settings
-from common.auth import login, logout
+import settings
+import setup
 
 
 class BDTConvert(TaskSet):
@@ -13,7 +15,7 @@ class BDTConvert(TaskSet):
 
     def on_start(self) -> None:
         """Logins and stuff before starting a user session."""
-        login()
+        setup.login()
 
     @task
     def usd_to_bdt(self) -> None:
@@ -32,11 +34,10 @@ class BDTConvert(TaskSet):
             params=querystring,
             catch_response=True,
         ) as response:
-            if response.status_code == 200:
+            if response.status_code == HTTPStatus.OK:
                 response.success()
             else:
                 response.failure(f"Failed! Http Code `{response.status_code}`")
-        return
 
     @task
     def bdt_to_usd(self) -> None:
@@ -55,11 +56,10 @@ class BDTConvert(TaskSet):
             params=querystring,
             catch_response=True,
         ) as response:
-            if response.status_code == 200:
+            if response.status_code == HTTPStatus.OK:
                 response.success()
             else:
                 response.failure(f"Failed! Http Code `{response.status_code}`")
-        return
 
     @task
     def stop(self) -> None:
@@ -70,4 +70,4 @@ class BDTConvert(TaskSet):
 
     def on_stop(self) -> None:
         """Logout and stuff after ending a user session."""
-        logout()
+        setup.logout()
