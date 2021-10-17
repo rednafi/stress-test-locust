@@ -45,5 +45,6 @@ jobs:
       - name: Run the tests & Generate coverage report
         run: |
           pytest -k 'not integration'
-          python3 -m locust -f src/locustfile.py \
+          locust -f src/locustfile.py  \
+          --host https://currency-exchange.p.rapidapi.com/ \
           --headless -u 1 -r 5 --run-time=5 --exit-code-on-error 1
