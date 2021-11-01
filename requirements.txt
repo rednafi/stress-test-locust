@@ -53,7 +53,7 @@ itsdangerous==2.0.1
     # via flask
 jinja2==3.0.1
     # via flask
-locust==2.2.3
+locust==2.4.2
     # via -r requirements.in
 markupsafe==2.0.1
     # via jinja2
@@ -80,6 +80,8 @@ sniffio==1.2.0
     #   anyio
     #   httpcore
     #   httpx
+typing-extensions==3.10.0.2
+    # via locust
 urllib3==1.26.7
     # via requests
 werkzeug==2.0.1
