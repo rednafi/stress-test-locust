@@ -11,6 +11,7 @@ brotli==1.0.9
 certifi==2021.5.30
     # via
     #   geventhttpclient
+    #   httpcore
     #   httpx
     #   requests
 charset-normalizer==2.0.6
@@ -40,9 +41,9 @@ greenlet==1.1.2
     # via gevent
 h11==0.12.0
     # via httpcore
-httpcore==0.13.7
+httpcore==0.14.3
     # via httpx
-httpx==0.20.0
+httpx==0.21.1
     # via -r requirements.in
 idna==3.2
     # via
