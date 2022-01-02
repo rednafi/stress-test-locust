@@ -6,7 +6,7 @@
 #
 attrs==21.2.0
     # via pytest
-black==21.11b1
+black==21.12b0
     # via -r requirements-dev.in
 click==8.0.1
     # via
@@ -48,8 +48,6 @@ pyparsing==2.4.7
     # via packaging
 pytest==6.2.5
     # via -r requirements-dev.in
-regex==2021.9.30
-    # via black
 toml==0.10.2
     # via pytest
 tomli==1.2.1
