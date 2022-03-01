@@ -71,8 +71,8 @@ trim-imports: ## Remove unused imports
 .PHONY: dep-lock
 dep-lock: ## Freeze deps in `requirements.txt` file
 	@sort --ignore-case -o requirements.in requirements.in
-	@pip-compile requirements.in -o requirements.txt
-	@pip-compile requirements-dev.in -o requirements-dev.txt
+	@pip-compile requirements.in -o requirements.txt --no-emit-options
+	@pip-compile requirements-dev.in -o requirements-dev.txt --no-emit-options
 
 
 .PHONY: dep-sync

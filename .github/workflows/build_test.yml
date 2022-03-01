@@ -16,6 +16,12 @@ on:
 jobs:
   run-tests:
     runs-on: ${{ matrix.os }}
+    # If you trigger a new workflow while the previous one is running,
+    # this will cancel the previous one.
+    concurrency:
+      group: ${{ github.head_ref || github.run_id }}
+      cancel-in-progress: true
+
     strategy:
       # Use matrix strategy to run the tests on multiple Py versions on multiple OSs.
       matrix:
@@ -59,7 +65,7 @@ jobs:
 
       - name: Run the tests & Generate coverage report
         run: |
-          pytest -k 'not integration'
+          pytest -v -s
           locust -f src/locustfile.py  \
           --host https://currency-exchange.p.rapidapi.com/ \
           --headless -u 1 -r 5 --run-time=5 --exit-code-on-error 1
