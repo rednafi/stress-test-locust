@@ -46,15 +46,14 @@ pyflakes==2.4.0
     # via flake8
 pyparsing==2.4.7
     # via packaging
-pytest==6.2.5
+pytest==7.0.1
     # via -r requirements-dev.in
-toml==0.10.2
-    # via pytest
 tomli==1.2.1
     # via
     #   black
     #   mypy
     #   pep517
+    #   pytest
 typing-extensions==3.10.0.2
     # via mypy
 wheel==0.37.0
