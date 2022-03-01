@@ -1,5 +1,7 @@
 from unittest.mock import patch
+
 from src import settings
+
 
 @patch.dict(
     "src.settings.os.environ",
