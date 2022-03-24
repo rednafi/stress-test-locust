@@ -1,6 +1,6 @@
 <div align="center">
 
-# Stress Testing w/ Locust
+# Stress testing with Locust
 
 </div>
 
@@ -9,7 +9,7 @@
 
 [Locust](https://locust.io/) is a distributed and scalable open-source library that helps you write effective load tests in pure Python. This repository demonstrates a modular architecture to establish a template for quickly building a scalable stress testing pipeline with Locust.
 
-## Locust Terminology
+## Locust terminology
 
 If you're unfamiliar with the terminologies and the generic workflow of writing stress-tests with Locust, then you should go through the official [documentation](https://docs.locust.io/en/stable/) first. With that out of the way, let's go through a few terminologies that comes up in this context quite often:
 
@@ -25,7 +25,7 @@ If you're unfamiliar with the terminologies and the generic workflow of writing 
 
 This template uses [Rapid API's](https://rapidapi.com/) currency-exchange [API](https://rapidapi.com/fyhao/api/currency-exchange) for showcasing the load testing procedure. The API converts one currency to another using the current exchange rate.
 
-### API Anatomy
+### API anatomy
 
 It takes three parameters in its query string:
 ```
@@ -75,7 +75,7 @@ with httpx.Client(http2=True) as client:
 print(response.text)
 ```
 
-## Stress Testing Pipeline
+## Stress testing pipeline
 
 Below, you can see the core architecture of the load testing pipeline. For brevity's sakeâ€”files regarding containerization, deployment, and dependency management have been omitted.
 
@@ -117,7 +117,7 @@ In the `locustfiles` directory, currently, there are only two load test modulesâ
 The **`locust.conf`** file defines the configurations like *hostname*, *number* of *workers*, *number of simulated users*, *spawn rate*, etc.
 
 
-## Run the Stress Tests Locally
+## Run the stress tests locally
 
 * Make sure you have [docker](https://www.docker.com/) and [docker-compose v2](https://github.com/docker/compose) installed on your machine.
 

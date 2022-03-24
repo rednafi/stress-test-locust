@@ -50,13 +50,13 @@ idna==3.3
     #   anyio
     #   requests
     #   rfc3986
-itsdangerous==2.1.0
+itsdangerous==2.1.2
     # via flask
-jinja2==3.0.3
+jinja2==3.1.0
     # via flask
 locust==2.8.4
     # via -r requirements.in
-markupsafe==2.1.0
+markupsafe==2.1.1
     # via jinja2
 msgpack==1.0.3
     # via locust
@@ -83,7 +83,7 @@ sniffio==1.2.0
     #   httpx
 typing-extensions==4.1.1
     # via locust
-urllib3==1.26.8
+urllib3==1.26.9
     # via requests
 werkzeug==2.0.3
     # via
