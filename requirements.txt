@@ -52,9 +52,11 @@ idna==3.3
     #   rfc3986
 itsdangerous==2.1.2
     # via flask
-jinja2==3.1.0
-    # via flask
-locust==2.8.4
+jinja2==3.0.3
+    # via
+    #   flask
+    #   locust
+locust==2.8.5
     # via -r requirements.in
 markupsafe==2.1.1
     # via jinja2
