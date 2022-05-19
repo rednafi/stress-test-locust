@@ -53,10 +53,8 @@ idna==3.3
 itsdangerous==2.1.2
     # via flask
 jinja2==3.0.3
-    # via
-    #   flask
-    #   locust
-locust==2.8.6
+    # via flask
+locust==2.9.0
     # via -r requirements.in
 markupsafe==2.1.1
     # via jinja2
