@@ -1,4 +1,4 @@
-name: Check Locust Stress Environment
+name: CI
 
 on:
   push:
@@ -10,14 +10,12 @@ on:
       - master
 
   schedule:
-    # Every day at 1.00 UTC.
-    - cron: "0 1 * * *"
-
+    # Every Sunday at 0:00 UTC.
+    - cron: "0 0 * * 0"
 
 concurrency:
       group: ${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
-
 
 jobs:
   run-tests:
