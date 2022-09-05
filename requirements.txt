@@ -60,7 +60,7 @@ msgpack==1.0.3
     # via locust
 psutil==5.9.0
     # via locust
-python-dotenv==0.20.0
+python-dotenv==0.21.0
     # via -r requirements.in
 pyzmq==22.3.0
     # via locust
