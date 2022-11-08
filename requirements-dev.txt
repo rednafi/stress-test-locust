@@ -14,8 +14,6 @@ click==8.0.4
     # via
     #   black
     #   pip-tools
-exceptiongroup==1.0.0rc9
-    # via pytest
 flake8==4.0.1
     # via -r requirements-dev.in
 iniconfig==1.1.1
@@ -24,7 +22,7 @@ isort==5.10.1
     # via -r requirements-dev.in
 mccabe==0.6.1
     # via flake8
-mypy==0.982
+mypy==0.990
     # via -r requirements-dev.in
 mypy-extensions==0.4.3
     # via
@@ -53,11 +51,7 @@ pyparsing==3.0.7
 pytest==7.2.0
     # via -r requirements-dev.in
 tomli==2.0.1
-    # via
-    #   black
-    #   build
-    #   mypy
-    #   pytest
+    # via pep517
 typing-extensions==4.1.1
     # via mypy
 wheel==0.37.1
