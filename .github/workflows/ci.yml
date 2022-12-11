@@ -10,8 +10,8 @@ on:
       - master
 
   schedule:
-    # Every Sunday at 0:00 UTC.
-    - cron: "0 0 * * 0"
+    # Every Sunday at 0:37 UTC.
+    - cron: "37 0 * * 0"
 
 concurrency:
       group: ${{ github.head_ref || github.run_id }}
@@ -31,13 +31,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
-        id: cp11
         with:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
           cache-dependency-path: |
             **/requirements*.txt
-      - run: echo '${{ steps.cp311.outputs.cache-hit }}'
 
       - name: Install the Dependencies
         run: |
