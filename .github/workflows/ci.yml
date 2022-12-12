@@ -39,7 +39,6 @@ jobs:
             **/requirements*.txt
       - run: echo '${{ steps.cp311.outputs.cache-hit }}'
 
-      - uses: actions/cache@v3
       - name: Install the Dependencies
         run: |
           echo "Upgrading pip ...."
