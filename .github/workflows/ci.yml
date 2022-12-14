@@ -27,25 +27,17 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         python-version: ["3.8", "3.9", "3.10", "3.11"]
-        include:
-        - os: ubuntu-latest
-          path: ~/.cache/pip
-        - os: macos-latest
-          path: ~/Library/Caches/pip
 
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
+        id: cp11
         with:
           python-version: ${{ matrix.python-version }}
+          cache: "pip"
+      - run: echo '${{ steps.cp311.outputs.cache-hit }}'
 
       - uses: actions/cache@v3
-        with:
-          path: ${{ matrix.path }}
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('**/requirements-dev.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
       - name: Install the Dependencies
         run: |
           echo "Upgrading pip ...."
