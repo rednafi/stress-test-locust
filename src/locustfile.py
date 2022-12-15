@@ -4,7 +4,6 @@ import logging
 from typing import Any
 
 from locust import HttpUser, events
-
 from locustfiles.bdt_convert import BDTConvert
 from locustfiles.rs_convert import RSConvert
 

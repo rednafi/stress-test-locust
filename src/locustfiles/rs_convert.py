@@ -2,10 +2,9 @@ from __future__ import annotations
 
 from http import HTTPStatus
 
-from locust import TaskSet, between, task
-
 import settings
 import setup
+from locust import TaskSet, between, task
 
 
 class RSConvert(TaskSet):

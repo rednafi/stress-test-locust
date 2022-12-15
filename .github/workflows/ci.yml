@@ -54,18 +54,11 @@ jobs:
 
       - name: Check Linter
         run: |
-          echo "Checking black formatting..."
-          python3 -m black --check .
-
-          echo "Checking isort formatting..."
-          python3 -m isort --check .
-
-          echo "Checking flake8 formatting..."
-          python3 -m flake8 .
+          make lint-check
 
       - name: Run the tests & Generate coverage report
         run: |
-          pytest -v -s
+          make test
           locust -f src/locustfile.py  \
           --host https://currency-exchange.p.rapidapi.com/ \
           --headless -u 1 -r 5 --run-time=5 --exit-code-on-error 1
