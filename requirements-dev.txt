@@ -38,7 +38,7 @@ pluggy==1.0.0
     # via pytest
 pytest==7.2.1
     # via -r requirements-dev.in
-ruff==0.0.239
+ruff==0.0.253
     # via -r requirements-dev.in
 typing-extensions==4.4.0
     # via mypy
