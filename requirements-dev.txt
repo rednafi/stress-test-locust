@@ -34,7 +34,7 @@ platformdirs==2.6.2
     # via black
 pluggy==1.0.0
     # via pytest
-pytest==7.4.2
+pytest==7.4.3
     # via -r requirements-dev.in
 ruff==0.0.291
     # via -r requirements-dev.in
