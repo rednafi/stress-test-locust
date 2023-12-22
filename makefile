@@ -10,7 +10,7 @@ endef
 
 
 .PHONY: lint
-lint: black ruff mypy	## Apply all the linters.
+lint: ruff-check ruff-format mypy	## Apply all the linters.
 
 
 .PHONY: lint-check
@@ -19,27 +19,26 @@ lint-check:  ## Check whether the codebase satisfies the linter rules.
 	@echo "Checking linter rules..."
 	@echo "========================"
 	@echo
-	@black --check $(path)
-	@ruff $(path)
+	@ruff check $(path)
 	@echo 'y' | mypy $(path) --install-types
 
 
-.PHONY: black
-black: ## Apply black.
+.PHONY: ruff-check
+ruff-check: ## Apply ruff-check.
 	@echo
-	@echo "Applying black..."
-	@echo "================="
+	@echo "Applying ruff-check..."
+	@echo "======================"
 	@echo
-	@black --fast $(path)
+	@ruff check --fix $(path)
 	@echo
 
 
-.PHONY: ruff
-ruff: ## Apply ruff.
-	@echo "Applying ruff..."
-	@echo "================"
+.PHONY: ruff-format
+ruff: ## Apply ruff-format.
+	@echo "Applying ruff-format..."
+	@echo "======================="
 	@echo
-	@ruff --fix $(path)
+	@ruff format $(path)
 
 
 .PHONY: mypy

@@ -1,5 +1,5 @@
 # Use the latest locust image
-FROM python:3.10-bullseye
+FROM python:3.10-bookworm
 
 # Set working directory
 WORKDIR /code
