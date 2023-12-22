@@ -168,7 +168,7 @@ _workers_, _number of simulated users_, _spawn rate_, etc.
     greeted by a screen like below. You should see that the fields of the form are already
     filled in since Locust pulls the values from the `locust.conf` file:
 
-        ![locust signin][12]
+    ![locust signin][12]
 
 -   Once you've pressed the _start swarming_ button, you'll be taken to the following page:
 
