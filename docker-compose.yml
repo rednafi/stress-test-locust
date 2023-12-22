@@ -5,7 +5,7 @@ services:
     container_name: locust-main
     build:
       context: ./
-      dockerfile: ./dockerfiles/python311/Dockerfile
+      dockerfile: ./dockerfiles/python312/Dockerfile
     ports:
       - 8089:8089
     volumes:
@@ -21,7 +21,7 @@ services:
       - ./:/code/
     build:
       context: ./
-      dockerfile: ./dockerfiles/python311/Dockerfile
+      dockerfile: ./dockerfiles/python312/Dockerfile
     command: |
       bash -c 'locust -f /code/src/locustfile.py --worker \
       --master-host main --config /code/src/locust.conf'

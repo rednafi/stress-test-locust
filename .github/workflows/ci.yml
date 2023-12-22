@@ -10,12 +10,12 @@ on:
       - master
 
   schedule:
-    # Every Sunday at 0:37 UTC.
-    - cron: "37 0 * * 0"
+    # Run every 15 days at 12:37 AM UTC.
+    - cron: "37 0 */15 * *"
 
 concurrency:
-      group: ${{ github.head_ref || github.run_id }}
-      cancel-in-progress: true
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   run-tests:
@@ -26,7 +26,7 @@ jobs:
       # Use matrix strategy to run the tests on multiple Py versions on multiple OSs.
       matrix:
         os: [ubuntu-latest, macos-latest]
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v4
@@ -50,6 +50,3 @@ jobs:
       - name: Run the tests & Generate coverage report
         run: |
           make test
-          locust -f src/locustfile.py  \
-          --host https://currency-exchange.p.rapidapi.com/ \
-          --headless -u 1 -r 5 --run-time=5 --exit-code-on-error 1
