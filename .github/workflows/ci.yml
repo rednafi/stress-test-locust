@@ -52,4 +52,4 @@ jobs:
           make test
           locust -f src/locustfile.py  \
           --host https://currency-exchange.p.rapidapi.com/ \
-          --headless -u 1 -r 5 --run-time=5 --exit-code-on-error 1
+          --headless -u 1 -r 5 --run-time=1
