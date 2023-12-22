@@ -13,18 +13,18 @@ as a template for quickly building a scalable stress testing pipeline with Locus
 ## Locust terminology
 
 If you're unfamiliar with the terminologies and the general workflow of stress testing with
-Locust, then I recommend going through the official [documentation] first. With that out
-of the way, let's rehash a few terminologies that comes up in this context quite often:
+Locust, then I recommend going through the official [documentation] first. With that out of
+the way, let's rehash a few terminologies that come up in this context quite often:
 
-**Task:** In Locust, a [Task] is the smallest unit of a test suite. Usually, it means,
-any function or method that is decorated with the `@task` decorator.
+**Task:** In Locust, a [Task] is the smallest unit of a test suite. Usually, it means, any
+function or method that is decorated with the `@task` decorator.
 
-**TaskSet:** A [TaskSet] is a class that establishes a contextual boundary between
-different groups of Tasks. You can essentially group multiple similar Tasks inside a
-TaskSet. Then you use the TaskSets from your User class.
+**TaskSet:** A [TaskSet] is a class that establishes a contextual boundary between different
+groups of Tasks. You can essentially group multiple similar Tasks inside a TaskSet. Then you
+use the TaskSets from your User class.
 
-**User:** In Locust, a [User] is a class that executes the tests either by directly
-calling the Task methods or via using TaskSets.
+**User:** In Locust, a [User] is a class that executes the tests either directly calling the
+Task methods or using TaskSets.
 
 **_In more complex cases, the tests can further be organized by arranging them in multiple
 test modules. This template groups the Tasks using TaskSets and places multiple TaskSets in
@@ -32,7 +32,7 @@ separate test modules to achieve better modularity._**
 
 ## Target API
 
-Here, we're using [Rapid API]'s currency-exchange [API] to showcase the load testing
+Here, we're using [Rapid API]'s currency exchange [API] to showcase the load testing
 procedure. The API converts one currency to another using the current exchange rate.
 
 ### API anatomy
@@ -49,8 +49,8 @@ And returns the converted value.
 
 ### Access the API
 
-Sign up for a Rapid API [account] and get your token. You can access the API via cURL
-like (You need to provide your API token in the header):
+Sign up for a Rapid API [account] and get your token. You can access the API via cURL like
+(You need to provide your API token in the header):
 
 ```sh
 curl --request GET \
@@ -93,7 +93,7 @@ files regarding containerization, deployment, and dependency management have bee
 
 ```txt
 src/
-├── locustfiles         # Directir where the load test modules live
+├── locustfiles         # Directory where the load test modules live
 │   ├── __init__.py
 │   ├── bdt_convert.py  # Load test module 1
 │   └── rs_convert.py   # Load test module 2
@@ -118,7 +118,8 @@ The load test modules reside in the **`locustfiles`** directory. Test modules im
 the functions in the `setup.py` file before executing each test.
 
 In the `locustfiles` folder, currently, there are only two load test modules:
-`bdt_convert.py` and `rs_convert.py`. You can name your test modules whatever you want as long as the load testing classes and functions reside here.
+`bdt_convert.py` and `rs_convert.py`. You can name your test modules whatever you want as
+long as the load testing classes and functions reside here.
 
 -   [bdt_convert.py](src/locustfiles/bdt_convert.py): This module houses a single TaskSet
     named `BDTConvert` that has two Tasks—`usd_to_bdt` and `bdt_to_usd`. The first Task
@@ -143,8 +144,8 @@ _workers_, _number of simulated users_, _spawn rate_, etc.
 
 ## Run the stress tests locally
 
--   Make sure you have the latest version of [docker] and docker-compose installed on
-    your machine.
+-   Make sure you have the latest version of [docker] and docker-compose installed on your
+    machine.
 
 -   Clone this repository and go to the root directory.
 
@@ -173,7 +174,7 @@ _workers_, _number of simulated users_, _spawn rate_, etc.
 
     ![locust-dashboard]
 
--   You can start, stop and control your tests from there.
+-   You can start, stop, and control your tests from there.
 
 ## Disclaimer
 
