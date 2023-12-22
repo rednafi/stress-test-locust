@@ -10,8 +10,8 @@ on:
       - master
 
   schedule:
-    # Every Sunday at 0:37 UTC.
-    - cron: "37 0 * * 0"
+    # Run every 15 days at 12:37 AM UTC.
+    - cron: "37 0 */15 * *"
 
 concurrency:
   group: ${{ github.head_ref || github.run_id }}
