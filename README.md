@@ -117,7 +117,7 @@ reside in the `setup.py` file.
 The load test modules reside in the **`locustfiles`** directory. Test modules import and use
 the functions in the `setup.py` file before executing each test.
 
-In the `locustfiles` folder, currently, there are only two load test modules:
+In the `locustfiles` folder, currently, there are only two load test modules—
 `bdt_convert.py` and `rs_convert.py`. You can name your test modules whatever you want as
 long as the load testing classes and functions reside here.
 
@@ -130,7 +130,7 @@ long as the load testing classes and functions reside here.
     things as the first one; only it tests the APIs while the request query asks for USD to
     RS conversion and vice versa.
 
-        The reason that there are two similar test modules is just to demonstrate how you
+    The reason that there are two similar test modules is just to demonstrate how you
         can organize your Tasks, TaskSets, and test modules.
 
 -   [locustfile.py](src/locustfile.py): This file works as the entrypoint of the workflow.
